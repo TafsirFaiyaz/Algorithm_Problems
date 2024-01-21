@@ -1,0 +1,39 @@
+def bubbleSort(arr):
+    for i in range(len(arr)-1):
+        swap=0          # Took extra var swap
+
+        for j in range(len(arr)-i-1):
+            if arr[j] > arr[j+1]:
+
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+                swap+=1     #if there is no swapping then the array is sorted
+        if swap==0:         
+            return arr      #As the swapping is 0 so we can break the loop and say that we dont need to continue looping and the array is sorted
+
+input_file = "/content/input2.txt"
+output_file = "/content/output2.txt"
+
+f_input = open(input_file, 'r')
+result=[]
+
+for i in range(2):
+
+    
+
+    test= int(f_input.readline().strip())
+
+    arr=f_input.readline().split()
+   
+
+    for i in range(test):
+        arr[i]=int(arr[i])
+
+    bubbleSort(arr)
+    result.append(f"{arr}")
+
+f_output = open(output_file, 'w')
+
+
+for resul in result:
+    f_output.write(resul+"\n")
