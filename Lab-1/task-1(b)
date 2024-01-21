@@ -1,0 +1,37 @@
+input_file = "/content/input1b"
+output_file = "/content/output1b"
+
+
+f_input = open(input_file, 'r')
+
+
+test= int(f_input.readline().strip())
+
+results = []  
+
+
+for _ in range(test):
+    m=f_input.readline()
+    n = m.split()
+    x=int(n[1])
+    y=int(n[3])
+    z=n[2]
+
+    if z=="+":
+        sum=x+y
+    elif z=="-":
+        sum=x-y
+    elif z=="*":
+        sum=x*y
+    elif z=="/":
+        sum=x/y
+
+    results.append(f'The result of {x} {z} {y} is {sum}')
+
+f_output = open(output_file, 'w')
+
+
+for result in results:
+    f_output.write(result + "\n")
+
+f_output.close()
