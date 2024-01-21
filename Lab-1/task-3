@@ -1,0 +1,63 @@
+def rank_students(n, ids, marks):
+    students = []
+
+    for i in range(n):
+      students.append((ids[i], marks[i]))
+
+  
+    for i in range(n - 1):
+        for j in range(i + 1, n):
+
+            if students[i][1] < students[j][1]:
+                students[i], students[j] = students[j], students[i]
+
+            elif students[i][1] == students[j][1]:
+               
+                if students[i][0]>students[j][0]:
+                    students[i],students[j]=students[j],students[i]
+
+  
+    return students
+
+input_file = "/content/input3.txt"
+output_file = "/content/output3.txt"
+
+f_input = open(input_file, 'r')
+result=[]
+
+for i in range(2):
+
+    
+
+    test= int(f_input.readline().strip())
+   
+    ids=f_input.readline().split()
+
+    marks=f_input.readline().split()
+   
+
+    for j in range(test):
+        ids[j]=int(ids[j])
+        marks[j]=int(marks[j])
+
+    m= rank_students(test,ids,marks)
+    x=[]
+    for student in m:
+        x.append("ID: {} Mark: {}".format(student[0], student[1]))
+    result.append(x)
+
+f_input.close()
+    
+
+f_output = open(output_file, 'w')
+
+x=0
+for rs in result:
+    x+=1
+    u="Output"+str(x)+":"+"\n"
+    f_output.write(u)
+
+    
+    for i in range(len(rs)):
+       
+        f_output.write(rs[i]+"\n")
