@@ -1,1 +1,50 @@
+#Task 1a
 
+def ansfinder(l,ans):
+
+    for i in range(len(l)):
+        m=l[i]
+        for j in range(i+1,len(l)):
+            sum=m+l[j]
+            if sum==ans:
+                return i+1,j+1
+
+    return "IMPOSSIBLE"
+
+input_file = "/content/input1a.txt"
+output_file = "/content/output1a.txt"
+
+
+f_input = open(input_file, 'r')
+results = []
+for i in range(4):
+    m= (f_input.readline().split())
+    test=int(m[0])
+    ans=int(m[1])
+
+
+
+    l=(f_input.readline().split())
+
+    for i in range(test):
+        l[i]=int(l[i])
+
+    j=ansfinder(l,ans)
+    results.append(j)
+
+
+f_output = open(output_file, 'w')
+
+
+for result in results:
+
+    if type(result)==tuple:
+
+        x= str(result[0])+" "+ str(result[1])+"\n"
+        f_output.write(x)
+
+
+    else:
+
+        x=str(result)+"\n"
+        f_output.write(x)
