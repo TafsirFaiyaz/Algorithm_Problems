@@ -1,0 +1,65 @@
+#task-2
+
+def merge_lists(a1,a2):
+    result = []
+    x=0
+    y=0
+
+    while x<len(a1) and y<len(a2):
+
+        if a1[x] <= a2[y]:
+            result.append(a1[x])
+            x+=1
+
+        else:
+            result.append(a2[y])
+            y += 1
+
+    while x<len(a1):
+
+        result.append(a1[x])
+        x += 1
+
+    while y<len(a2):
+
+        result.append(a2[y])
+        y += 1
+
+    return result
+
+input_file = "/content/input2.txt"
+output_file = "/content/output2.txt"
+
+
+f_input = open(input_file, 'r')
+results = []
+
+for i in range(4):
+
+    m= (f_input.readline().strip())
+
+    test=int(m)
+    l=(f_input.readline().split())
+
+    for i in range(test):
+        l[i]=int(l[i])
+
+    m= (f_input.readline().strip())
+    test=int(m)
+    k=f_input.readline().split()
+
+    for i in range(test):
+        k[i]=int(k[i])
+
+    j=merge_lists(l,k)
+    results.append(j)
+
+
+f_output = open(output_file, 'w')
+
+
+for result in results:
+
+    x=str(result).strip("[")
+    x=x.strip("]")
+    f_output.write(x + "\n")
