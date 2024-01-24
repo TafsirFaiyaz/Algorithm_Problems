@@ -1,0 +1,34 @@
+with open('/content/input2.txt', 'r') as input_file, open('/content/output2.txt', 'w') as output_file:
+    for i in range(3):
+        ele = int(input_file.readline())
+        arr = list(map(int, input_file.readline().split()))
+
+        def find_max_sum(arr):
+
+            max_num = -99999999999
+            second_max_num = -999999999999
+            i=len(arr)-1
+
+            while i!=0:
+                if abs(arr[i])>second_max_num:
+                    second_max_num=abs(arr[i])
+                    m=i
+
+                i-=1
+
+            result=-999999999
+
+            for i in range(m):
+                re=arr[i]+second_max_num**2
+
+                if re>result:
+                    result=re
+
+
+
+            return result
+
+
+        max_sum = find_max_sum(arr)
+
+        output_file.write(str(max_sum) + '\n')
