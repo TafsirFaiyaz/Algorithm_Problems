@@ -1,0 +1,47 @@
+with open('/content/input1.txt', 'r') as input_file, open('/content/output1.txt', 'w') as output_file:
+    for i in range(3):
+        num_aliens = int(input_file.readline())
+        alien_hgts = list(map(int, input_file.readline().split()))
+
+
+        pairs_count = [0]
+
+        def mergeSortCount(hgts):
+            if len(hgts) <= 1:
+                return hgts
+
+            mid = len(hgts) // 2
+            l = mergeSortCount(hgts[:mid])
+            r = mergeSortCount(hgts[mid:])
+
+            merged = merge(l, r, pairs_count)
+            return merged
+
+        def merge(l, r, pairs_count):
+            merged = []
+            i = 0
+            j = 0
+            local_pairs_count = 0
+
+            while i < len(l) and j < len(r):
+                if l[i] > r[j]:
+                    merged.append(r[j])
+                    local_pairs_count += len(l) - i
+                    j += 1
+                else:
+
+                    i += 1
+
+            merged.extend(l[i:])
+            merged.extend(r[j:])
+
+            pairs_count[0] += local_pairs_count
+
+            return merged
+
+        sorted_hgts = mergeSortCount(alien_hgts)
+
+        pairs_count_val = pairs_count[0]
+
+
+        output_file.write(str(pairs_count_val)+"\n")
