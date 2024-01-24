@@ -1,0 +1,25 @@
+with open('/content/input4.txt', 'r') as input_file, open('/content/output4.txt', 'w') as output_file:
+    N = int(input_file.readline())
+    num = list(map(int, input_file.readline().split()))
+    Queries = int(input_file.readline())
+
+    def find_kth_smallest(arr, k):
+        if len(arr) == 1:
+            return arr[0]
+
+        p = arr[0]
+        l = [x for x in arr[1:] if x <= p]
+        r = [x for x in arr[1:] if x > p]
+
+        if k <= len(l):
+            return find_kth_smallest(l, k)
+        elif k == len(l) + 1:
+            return p
+        else:
+            return find_kth_smallest(r, k - len(l) - 1)
+
+    for query in range(Queries):
+        K = int(input_file.readline())
+        kth_smallest = find_kth_smallest(num, K)
+        
+        output_file.write(str(kth_smallest) + '\n')
