@@ -1,0 +1,26 @@
+with open('/content/input1(b).txt', 'r') as input_file, open('/content/output1(b).txt', 'w') as output_file:
+
+    for k in range(3):
+        z=(input_file.readline().split())
+        x=int(z[0])
+        y=int(z[1])
+        dic={}
+        for i in range(x+1):
+            dic[i]=[]
+
+
+        for i in range(y):
+            inp=input_file.readline().split()
+
+            for j in range(len(inp)):
+                inp[j]=int(inp[j])
+
+
+            dic[inp[0]].append((inp[1],inp[2]))
+
+
+        output_file.write(f"Sample output {k+1}:\n")
+        print(f"Sample output {k+1}:")
+        for i in range(len(dic)):
+            print(f"{i}:{dic[i]}")
+            output_file.write(f"{i}:{dic[i]}\n")
