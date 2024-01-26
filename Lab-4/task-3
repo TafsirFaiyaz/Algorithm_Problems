@@ -1,0 +1,45 @@
+f = open("/content/input2.txt","r")
+f1 = open("/content/output2.txt","w")
+
+for i in range(4):
+
+    n,e = f.readline().split()
+
+    n = int(n)
+    e = int(e)
+    l = [0]
+
+    for i in range(int(n)):
+        l.append([])
+
+    for lines in range(e):
+
+        inp=f.readline()
+        lines = inp.strip()
+        a,b = lines.split(' ')
+        a,b = int(a),int(b)
+
+        l[a].append(b)
+        l[b].append(a)
+    clr = [False]*len(l)
+
+    def color(i, x = clr):
+        return x[i]
+
+    def dfs(g,s):
+        global clr
+        f1.write(str(s)+' ')
+        print(s,end = ' ')
+        clr[s] = True   #s= 4
+        for i in g[s]:  #[0, [3, 4], [3], [1, 2], [1]]
+            if color(i) == False:
+                dfs(g,i)
+
+
+
+    dfs(l,1)
+    f1.write("\n")
+    print()
+
+f.close()
+f1.close()
