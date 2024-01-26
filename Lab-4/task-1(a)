@@ -1,0 +1,28 @@
+with open('/content/input1(a).txt', 'r') as input_file, open('/content/output1(a).txt', 'w') as output_file:
+
+    for k in range(2):
+
+        z=(input_file.readline().split())
+        x=int(z[0])
+        y=int(z[1])
+
+
+        l=[0]*(x+1)
+        for i in range(x+1):
+            l[i]=[0]*(x+1)
+
+
+
+        for i in range(y):
+            inp=input_file.readline().split()
+            for j in range(len(inp)):
+                inp[j]=int(inp[j])
+
+            l[inp[0]][inp[1]]=inp[2]
+
+        output_file.write(f"Sample output {k+1}:\n")
+        print(f"Sample output {k+1}:")
+
+        for i in range(len(l)):
+            print(l[i])
+            output_file.write(f"{l[i]}\n")
