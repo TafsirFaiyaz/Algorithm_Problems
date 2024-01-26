@@ -1,0 +1,51 @@
+f = open("/content/input4.txt","r")
+f1 = open("/content/output4.txt","w")
+
+for i in range(5):
+
+    n,e = f.readline().split()
+
+    n = int(n)
+    e = int(e)
+    l = [0]
+
+    for i in range(int(n)):
+        l.append([])
+
+    for lines in range(e):
+
+        inp=f.readline()
+        lines = inp.strip()
+        a,b = lines.split(' ')
+        a,b = int(a),int(b)
+
+        l[a].append(b)
+
+    clr = [False]*len(l)
+    output = False
+
+    def dfs(g,s):
+        global output
+        global clr
+
+        clr[s] = True    #[0, [3, 4], [], [2], [3]]
+        for i in g[s]:
+
+            if clr[i] == True:
+                output = True
+                return
+            elif clr[i] == False:
+                dfs(g,i)
+        clr[s] = 2 #marking 2 after completing dfs of a vertex to avoid errors
+    dfs(l,1)
+
+    if output == True:
+        print("Yes")
+        f1.write('Yes')
+    else:
+        print('No')
+        f1.write('No')
+    f1.write("\n")
+
+f.close()
+f1.close()
