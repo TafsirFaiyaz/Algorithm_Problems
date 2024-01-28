@@ -1,0 +1,54 @@
+f = open("/content/input5.txt","r")
+f1 = open("/content/output5.txt","w")
+for i in range(5):
+    n,e,en = f.readline().split()
+    n = int(n)
+    e = int(e)
+    en = int(en)
+    l = [0]
+    for i in range(int(n)):
+        l.append([])
+
+    for lines in range(e):
+        inp=f.readline()
+        lines = inp.strip()
+        a,b = lines.split(' ')
+        a,b = int(a),int(b)
+        l[a].append(b)
+        l[b].append(a)
+
+    distance = [-1]*(n+1)
+    path = [None]*(n+1)
+    q = []
+    def shortest(g,s,e):
+        global distance
+        global path
+        global q
+        distance[s] = 0
+        q.append(s)
+        while len(q)>0:           #[0, [3, 4], [3], [1, 2], [1]]
+            u = q.pop(0)
+            for i in g[u]:
+                if distance[i] == -1:
+                    q.append(i)
+                    distance[i] = distance[u]+1
+                    path[i] = u
+                    print(path)
+    shortest(l,1,en)
+    print(f'Time: {distance[en]}')
+    f1.write(f'Time: {distance[en]}\n')
+    p = ''
+    u = en
+
+    while True:
+        if u == 1:
+            p+='1'
+            break
+        else:
+            p+=(str(u))+' '
+            u = path[u]
+    x = p[::-1]
+    f1.write(f"Shortest Path: {x}"+"\n")
+    print('Shortest Path',x)
+f.close()
+f1.close()
