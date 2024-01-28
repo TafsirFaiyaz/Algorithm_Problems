@@ -1,0 +1,59 @@
+
+f = open("/content/input6.txt","r")
+f1 = open("/content/output6.txt","w")
+
+for i in range(7):
+    r,c = f.readline().split()
+    row,column = int(r),int(c)
+    m = []
+    c=[]
+    for i in range(row):
+        m.append([])
+        c.append([])
+    x = 0
+    for i in range(row):
+        inp=f.readline()
+        lines = inp.strip()
+        for i in lines:
+            m[x].append(i)
+            c[x].append(False)
+        x+=1
+
+
+    def dfs(m, r, c):
+        global diamond
+        global color
+        if color[r][c] == False:
+            color[r][c] = True
+            if m[r][c] != '#':
+                if m[r][c] == 'D':
+                    diamond += 1
+                if c-1 >= 0 and color[r][c-1]== False:
+                    dfs(m, r, c-1)
+                if c+1 < len(m[0]) and color[r][c+1]== False:
+                    dfs(m, r, c+1)
+                if r+1 < len(m) and color[r+1][c]== False:
+                    dfs(m, r+1, c)
+                if r-1 >= 0 and color[r-1][c]== False:
+                    dfs(m, r-1, c)
+        else:
+            return
+
+    maximum = 0
+    diamond = 0
+    for i in range(row):
+        for j in range(column):
+            color = c.copy()
+            dfs(m,i,j)
+            if diamond>maximum:
+                maximum = diamond
+            diamond = 0
+
+
+
+    dfs(x,0,0)
+    print(maximum)
+    f1.write(str(maximum)+"\n")
+
+f.close()
+f1.close()
