@@ -1,0 +1,69 @@
+def dfs(course, graph, visited, result):
+    global output
+    visited[course] = 1
+
+    for neighbor in graph[course]:
+        if visited[neighbor] == 0:
+            dfs(neighbor, graph, visited, result)
+        elif visited[neighbor] == 1:
+            output=True
+            break
+
+    visited[course] = 2
+    result.append(course)
+
+def course_order_dfs(v, prerequisites):
+    graph = [[] for i in range(v + 1)]
+    for ver, e in prerequisites:
+        graph[ver].append(e)
+
+    visited = [0] * (v + 1)
+    result = []
+
+    for i in range(1, v + 1):
+        if visited[i] == 0:
+            dfs(i, graph, visited, result)
+
+    return result[::-1]
+
+
+input_file = "/content/input1(A).txt"
+output_file = "/content/output1(A).txt"
+
+f_input = open(input_file, 'r')
+f_output = open(output_file, 'w')
+
+test=int(f_input.readline())
+
+for i in range(test):
+    output=False
+
+    v, e = map(int, f_input.readline().split())
+    prerequisites = []
+
+
+    for j in range(e):
+        a, b = map(int, f_input.readline().split())
+        prerequisites.append((a, b))
+
+    order = course_order_dfs(v, prerequisites)
+
+
+
+    if output==False:
+        x=""
+        for course in order:
+            print(course, end=" ")
+            x+=str(course)
+            x+=" "
+        f_output.write(x+"\n")
+        print()
+
+
+    else:
+
+        print("Impossible")
+        f_output.write(f"Impossible\n")
+
+f_output.close()
+f_input.close()
