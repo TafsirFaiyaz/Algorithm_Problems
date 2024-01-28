@@ -1,0 +1,56 @@
+def course_order_bfs(N, prerequisites):
+    indegree = [0] * (N + 1)
+    graph = [[] for i in range(N + 1)]
+
+    for A, B in prerequisites:
+        indegree[B] += 1
+        graph[A].append(B)
+
+    queue = []
+    for i in range(1, N + 1):
+        if indegree[i] == 0:
+            queue.append(i)
+
+    order = []
+
+    while queue:
+        queue = sorted(queue)
+        course = queue.pop(0)
+        order.append(course)
+
+        for neighbor in graph[course]:
+            indegree[neighbor] -= 1
+            if indegree[neighbor] == 0:
+                queue.append(neighbor)
+
+    if len(order) != N:
+        print()
+        print("IMPOSSIBLE")
+        f_output.write("\nIMPOSSIBLE\n")
+    else:
+        for course in order:
+            print(course, end=" ")
+            f_output.write(f"{course} ")
+
+input_file = "/content/input2.txt"
+output_file = "/content/output2.txt"
+
+f_input = open(input_file, 'r')
+f_output=open(output_file,'w')
+test=int(f_input.readline())
+
+for i in range(test):
+    output=False
+
+    v, e = map(int, f_input.readline().split())
+    prerequisites = []
+
+
+    for i in range(e):
+        a, b = map(int, f_input.readline().split())
+        prerequisites.append((a, b))
+
+    order = course_order_bfs(v, prerequisites)
+
+f_input.close()
+f_output.close()
