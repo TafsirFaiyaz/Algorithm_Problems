@@ -1,0 +1,58 @@
+with open("input3.txt", "r") as inp_file, open("output3.txt", "w") as out_file:
+
+    def dfs(u, graph, visited, stack):
+        visited[u] = True
+        for v in graph[u]:
+            if not visited[v]:
+                dfs(v, graph, visited, stack)
+        stack.append(u)
+
+    def transpose_graph(graph):
+        transposed_graph = {u: [] for u in graph}
+        for u in graph:
+            for v in graph[u]:
+                transposed_graph[v].append(u)
+        return transposed_graph
+
+    def topological_sort(num_vertices, graph):
+        visited = [False] * (num_vertices + 1)
+        stack = []
+        for i in range(1, num_vertices + 1):
+            if not visited[i]:
+                dfs(i, graph, visited, stack)
+        return stack[::-1]
+
+    def strongly_connected_components(num_vertices, edges):
+        graph = {u: [] for u in range(1, num_vertices + 1)}
+        for u, v in edges:
+            graph[u].append(v)
+
+        order = topological_sort(num_vertices, graph)
+        transposed_graph = transpose_graph(graph)
+
+        visited = [False] * (num_vertices + 1)
+        scc_list = []
+
+        for u in order:
+            if not visited[u]:
+                scc = []
+                dfs(u, transposed_graph, visited, scc)
+                scc_list.append(scc)
+
+        return scc_list
+
+    test=int(inp_file.readline())
+    for i in range(test):
+        num_vertices, num_edges = map(int, inp_file.readline().split())
+        edges = [list(map(int, inp_file.readline().split())) for i in range(num_edges)]
+
+        scc_list = strongly_connected_components(num_vertices, edges)
+
+        scc_list = [sorted(scc) for scc in scc_list]
+
+        print(f"Sample Output {i+1}:")
+        out_file.write(f"Sample Output {i+1}:\n")
+
+        for scc in scc_list:
+            out_file.write(" ".join(str(u) for u in scc) + "\n")
+            print(" ".join(str(u) for u in scc))
