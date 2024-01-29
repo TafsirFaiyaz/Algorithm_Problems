@@ -1,0 +1,51 @@
+import heapq
+
+def read_input(f):
+
+
+    n, m  = map(int, f.readline().split())
+    edges = [[] for _ in range(n)]
+    for i in range(m):
+        u, v, w = map(int, f.readline().split())
+        edges[u-1].append((v-1, w))
+
+    s = int(f.readline())
+
+    return n, m, edges, s-1
+
+
+def dijkstra(n, edges, s):
+    dist = [-1] * n
+    dist[s] = 0
+    heap = [(0, s)]
+
+    while heap:
+        d, u = heapq.heappop(heap)
+        if d > dist[u]:
+            continue
+        for v, w in edges[u]:
+            new_dist = dist[u] + w
+            if dist[v] == -1 or new_dist < dist[v]:
+                dist[v] = new_dist
+                heapq.heappush(heap, (new_dist, v))
+
+    for d in dist:
+        print(d,end=" ")
+        f2.write(str(d) + " ")
+
+    print()
+    f2.write("\n")
+
+    return dist
+
+f1=open("/content/input1.txt","r")
+f2=open("/content/output1.txt","w")
+
+
+for i in range(2):
+
+    n, m, edges, s = read_input(f1)
+    dist = dijkstra(n, edges, s)
+
+f1.close()
+f2.close()
