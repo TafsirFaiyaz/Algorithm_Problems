@@ -1,0 +1,40 @@
+f=open("/content/input1.txt","r")
+fout=open("/content/output1.txt","w")
+
+for i in range(3):
+
+
+    t=int(f.readline())
+
+    tasks=[]
+
+    for i in range(t):
+        m=f.readline().split()
+        st,end=int(m[0]),int(m[1])
+        tasks.append((st,end))
+
+
+    for i in range(len(tasks)):
+        for j in range(len(tasks)-1):
+            if tasks[j][1]>=tasks[j+1][1]:
+                tasks[j],tasks[j+1]=tasks[j+1],tasks[j]
+
+
+    current_end = 0
+    completed_tasks = []
+
+    for task in tasks:
+        if task[0] >= current_end:
+            completed_tasks.append(task)
+
+            current_end = task[1]
+
+    fout.write(str(len(completed_tasks)) + '\n')
+    print(len(completed_tasks))
+
+    for task in completed_tasks:
+        fout.write(str(task[0]) + ' ' + str(task[1]) + '\n')
+        print(task[0],task[1])
+
+f.close()
+fout.close()
