@@ -1,0 +1,43 @@
+import heapq
+
+def read_input(f):
+
+    n, m = map(int, f.readline().split())
+    adj_list = [[] for _ in range(n)]
+    for i in range(m):
+        u, v, w = map(int, f.readline().split())
+        adj_list[u-1].append((v-1, w))
+    return adj_list, n
+
+def find_min_danger_path(adj_list, n):
+    dist = [float('inf') for _ in range(n)]
+    dist[0] = 0
+    visited = set()
+    pq = [(0, 0)]
+    while pq:
+        d, u = heapq.heappop(pq)
+        if u in visited:
+            continue
+        visited.add(u)
+        for v, w in adj_list[u]:
+            new_dist = max(d, w)
+            if new_dist < dist[v]:
+                dist[v] = new_dist
+                heapq.heappush(pq, (new_dist, v))
+    if dist[n-1] == float('inf'):
+        return "Impossible"
+    return dist[n-1]
+
+f1=open("/content/input3.txt","r")
+f2=open("/content/output3.txt","w")
+
+for i in range(2):
+
+    adj_list, n = read_input(f1)
+    result = find_min_danger_path(adj_list, n)
+    print(result)
+    f2.write(str(result)+"\n")
+
+
+f1.close()
+f2.close()
