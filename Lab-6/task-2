@@ -1,0 +1,68 @@
+from heapq import heappop, heappush
+
+inp=open("/content/input2.txt","r")
+out=open("/content/output2.txt","w")
+
+for i in range(3):
+
+    n, m = (int(x) for x in inp.readline().split())
+    edges = []
+
+    for i in range(m):
+        edges.append((int(x) for x in inp.readline().split()))
+
+    start_a, start_b = (int(x) for x in inp.readline().split())
+
+    graph = [[] for _ in range(n + 1)]
+    for x, y, w in edges:
+        graph[x].append((y, w))
+
+
+    def dijkstra(graph, start):
+        times = [-1]*len(graph)
+        times[start] = 0
+
+        priority_queue = [(0, start)]
+
+        while priority_queue:
+            curr_dist, curr_node = heappop(priority_queue)
+
+            if curr_dist > times[curr_node]:
+                continue
+
+            for neighbor, weight in graph[curr_node]:
+                time = curr_dist + weight
+
+                if times[neighbor] == -1 or time < times[neighbor]:
+                    times[neighbor] = time
+                    heappush(priority_queue, (time, neighbor))
+
+        return times
+
+
+    times_a = dijkstra(graph, start_a)
+    times_b = dijkstra(graph, start_b)
+    shortest_time = float('inf')
+    common_node = None
+
+    for i in range(1, len(graph)):
+        if times_a[i] != -1 and times_b[i] != -1:
+            time = max(times_a[i],times_b[i])
+            if time < shortest_time:
+                shortest_time = time
+                common_node = i
+
+
+    if common_node is None:
+        print('Impossible')
+        out.write("Impossible\n")
+
+    else:
+        print(f"Time {shortest_time}")
+        out.write(f"Time {shortest_time}\n")
+
+        print(f"Node {common_node}")
+        out.write(f"Node {common_node}\n")
+
+inp.close()
+out.close()
