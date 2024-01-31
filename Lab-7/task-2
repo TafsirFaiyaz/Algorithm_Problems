@@ -1,0 +1,48 @@
+f=open("/content/input2.txt","r")
+o=open("/content/output2.txt","w")
+
+for i in range(4):
+
+    t,p=f.readline().split()
+    t=int(t)
+    p=int(p)
+
+    d=[0]*p
+
+    task=[]
+
+    for i in range(t):
+        m=f.readline().split()
+        st,end=int(m[0]),int(m[1])
+        task.append((st,end))
+
+
+    for i in range(len(task)):
+        for j in range(len(task)-1):
+            if task[j][1]>=task[j+1][1]:
+                task[j],task[j+1]=task[j+1],task[j]
+
+
+    count=0
+
+
+    for i in range(len(task)):
+
+        st=task[i][0]
+        end=task[i][1]
+        d.sort(reverse=True)
+
+        for j in range(len(d)):
+
+            if st>=d[j]:
+
+                count+=1
+                d[j]=end
+
+                break
+
+    print(count)
+    o.write(str(count)+"\n")
+
+f.close()
+o.close()
