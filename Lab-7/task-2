@@ -8,7 +8,6 @@ for i in range(4):
     p=int(p)
 
     d=[0]*p
-
     task=[]
 
     for i in range(t):
@@ -16,15 +15,12 @@ for i in range(4):
         st,end=int(m[0]),int(m[1])
         task.append((st,end))
 
-
     for i in range(len(task)):
         for j in range(len(task)-1):
             if task[j][1]>=task[j+1][1]:
                 task[j],task[j+1]=task[j+1],task[j]
 
-
     count=0
-
 
     for i in range(len(task)):
 
