@@ -1,0 +1,33 @@
+with open('input3.txt', 'r') as fin, open('output3.txt', 'w') as fout:
+    for i in range(2):
+        n, k = map(int, fin.readline().split())
+        parent = list(range(n + 1))
+        size = [1] * (n + 1)
+
+        def find_root(node):
+            if parent[node] != node:
+                parent[node] = find_root(parent[node])
+            return parent[node]
+
+        def merge_sets(node1, node2):
+            root1, root2 = find_root(node1), find_root(node2)
+            if root1 == root2:
+                return size[root1]
+            if size[root1] < size[root2]:
+                root1, root2 = root2, root1
+            parent[root2] = root1
+            size[root1] += size[root2]
+            return size[root1]
+
+        l=f"Sample Output{i+1}:"
+        fout.write(l+"\n")
+        print(l)
+
+        for j in range(k):
+            a, b = map(int, fin.readline().split())
+            x=str(merge_sets(a, b))
+            fout.write(x + '\n')
+            print(x)
+
+fin.close()
+fout.close()
