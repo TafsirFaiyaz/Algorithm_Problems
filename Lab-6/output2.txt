@@ -1,0 +1,5 @@
+Time 5
+Node 3
+Impossible
+Time 8
+Node 2
