@@ -1,0 +1,12 @@
+Sample Output1:
+2
+2
+4
+Sample Output2:
+2
+3
+2
+4
+3
+4
+7
