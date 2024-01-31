@@ -3,9 +3,7 @@ fout=open("/content/output1.txt","w")
 
 for i in range(3):
 
-
     t=int(f.readline())
-
     tasks=[]
 
     for i in range(t):
