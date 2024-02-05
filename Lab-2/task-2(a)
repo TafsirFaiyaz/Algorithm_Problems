@@ -15,7 +15,6 @@ def ansfinder(l,ans):
 input_file = "/content/input1b.txt"
 output_file = "/content/output1b.txt"
 
-
 f_input = open(input_file, 'r')
 results = []
 
@@ -23,8 +22,6 @@ for i in range(4):
     m= (f_input.readline().split())
     test=int(m[0])
     ans=int(m[1])
-
-
 
     l=(f_input.readline().split())
 
@@ -34,9 +31,7 @@ for i in range(4):
     j=ansfinder(l,ans)
     results.append(j)
 
-
 f_output = open(output_file, 'w')
-
 
 for result in results:
 
