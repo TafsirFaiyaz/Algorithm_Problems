@@ -11,8 +11,6 @@ def mergeSort(arr):
 
         return max
 
-
-
     mid = len(arr)//2
 
     a1 = mergeSort(arr[:mid])
@@ -20,14 +18,12 @@ def mergeSort(arr):
 
     return max
 
-
-
 input_file = "/content/input4.txt"
 output_file = "/content/output4.txt"
 
-
 f_input = open(input_file, 'r')
 results = []
+
 for i in range(4):
 
     m= (f_input.readline().strip())
