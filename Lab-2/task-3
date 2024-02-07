@@ -47,7 +47,6 @@ for i in range(4):
     m= (f_input.readline().strip())
     test=int(m)
 
-
     l=(f_input.readline().split())
 
     for i in range(test):
@@ -57,7 +56,6 @@ for i in range(4):
 
     test=int(m)
 
-
     k=(f_input.readline().split())
 
     for i in range(test):
@@ -66,14 +64,11 @@ for i in range(4):
     for i in range(len(l)):
         k.append(l[i])
 
-
-
     j=mergeSort(k)
     results.append(j)
 
 
 f_output = open(output_file, 'w')
-
 
 for result in results:
 
