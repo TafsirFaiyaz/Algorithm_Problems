@@ -34,7 +34,6 @@ with open('/content/input1.txt', 'r') as input_file, open('/content/output1.txt'
 
             merged.extend(l[i:])
             merged.extend(r[j:])
-
             pairs_count[0] += local_pairs_count
 
             return merged
