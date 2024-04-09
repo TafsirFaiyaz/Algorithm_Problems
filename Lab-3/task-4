@@ -13,8 +13,10 @@ with open('/content/input4.txt', 'r') as input_file, open('/content/output4.txt'
 
         if k <= len(l):
             return find_kth_smallest(l, k)
+
         elif k == len(l) + 1:
             return p
+
         else:
             return find_kth_smallest(r, k - len(l) - 1)
 
