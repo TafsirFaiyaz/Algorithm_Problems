@@ -7,6 +7,7 @@ with open('/content/input1(a).txt', 'r') as input_file, open('/content/output1(a
         y=int(z[1])
 
         l=[0]*(x+1)
+
         for i in range(x+1):
             l[i]=[0]*(x+1)
 
