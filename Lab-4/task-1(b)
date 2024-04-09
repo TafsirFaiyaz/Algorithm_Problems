@@ -10,13 +10,11 @@ with open('/content/input1(b).txt', 'r') as input_file, open('/content/output1(b
         for i in range(x+1):
             dic[i]=[]
 
-
         for i in range(y):
             inp=input_file.readline().split()
 
             for j in range(len(inp)):
                 inp[j]=int(inp[j])
-
 
             dic[inp[0]].append((inp[1],inp[2]))
 
