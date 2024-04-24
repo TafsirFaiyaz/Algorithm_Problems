@@ -1,14 +1,11 @@
 input_file = "/content/input1b"
 output_file = "/content/output1b"
 
-
 f_input = open(input_file, 'r')
-
 
 test= int(f_input.readline().strip())
 
 results = []  
-
 
 for _ in range(test):
     m=f_input.readline()
@@ -21,6 +18,7 @@ for _ in range(test):
         sum=x+y
     elif z=="-":
         sum=x-y
+
     elif z=="*":
         sum=x*y
     elif z=="/":
@@ -29,7 +27,6 @@ for _ in range(test):
     results.append(f'The result of {x} {z} {y} is {sum}')
 
 f_output = open(output_file, 'w')
-
 
 for result in results:
     f_output.write(result + "\n")
