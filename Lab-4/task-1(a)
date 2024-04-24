@@ -11,7 +11,6 @@ with open('/content/input1(a).txt', 'r') as input_file, open('/content/output1(a
         for i in range(x+1):
             l[i]=[0]*(x+1)
 
-        
         for i in range(y):
             inp=input_file.readline().split()
             for j in range(len(inp)):
