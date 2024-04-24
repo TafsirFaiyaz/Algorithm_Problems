@@ -19,8 +19,6 @@ result=[]
 
 for i in range(2):
 
-    
-
     test= int(f_input.readline().strip())
 
     arr=f_input.readline().split()
@@ -33,7 +31,6 @@ for i in range(2):
     result.append(f"{arr}")
 
 f_output = open(output_file, 'w')
-
 
 for resul in result:
     f_output.write(resul+"\n")
