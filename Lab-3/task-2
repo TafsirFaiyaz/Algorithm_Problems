@@ -12,6 +12,7 @@ with open('/content/input2.txt', 'r') as input_file, open('/content/output2.txt'
             i=len(arr)-1
 
             while i!=0:
+
                 if abs(arr[i])>second_max_num:
                     second_max_num=abs(arr[i])
                     m=i
@@ -21,6 +22,7 @@ with open('/content/input2.txt', 'r') as input_file, open('/content/output2.txt'
             result=-999999999
 
             for i in range(m):
+
                 re=arr[i]+second_max_num**2
 
                 if re>result:
