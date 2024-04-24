@@ -21,6 +21,7 @@ with open('/content/input1(b).txt', 'r') as input_file, open('/content/output1(b
 
         output_file.write(f"Sample output {k+1}:\n")
         print(f"Sample output {k+1}:")
+
         for i in range(len(dic)):
             print(f"{i}:{dic[i]}")
             output_file.write(f"{i}:{dic[i]}\n")
