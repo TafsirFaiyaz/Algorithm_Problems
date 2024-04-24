@@ -16,6 +16,7 @@ output_file = "/content/output1a.txt"
 
 f_input = open(input_file, 'r')
 results = []
+
 for i in range(4):
 
     m= (f_input.readline().split())
