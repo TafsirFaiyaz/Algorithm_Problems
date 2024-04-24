@@ -4,10 +4,14 @@ def sort_train_schedules(train_schedules):
   
     for i in range(len(train_schedules) - 1):
         for j in range(i + 1, len(train_schedules)):
+
             if train_schedules[i][0] > train_schedules[j][0]:
                 train_schedules[i], train_schedules[j] = train_schedules[j], train_schedules[i]
+
             elif train_schedules[i][0] == train_schedules[j][0]:
+
                 if train_schedules[i][1] < train_schedules[j][1]:
+
                     train_schedules[i], train_schedules[j] = train_schedules[j], train_schedules[i]
 
     return train_schedules
