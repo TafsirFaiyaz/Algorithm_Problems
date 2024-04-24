@@ -27,8 +27,6 @@ result=[]
 
 for i in range(2):
 
-    
-
     test= int(f_input.readline().strip())
    
     ids=f_input.readline().split()
@@ -42,8 +40,10 @@ for i in range(2):
 
     m= rank_students(test,ids,marks)
     x=[]
+
     for student in m:
         x.append("ID: {} Mark: {}".format(student[0], student[1]))
+
     result.append(x)
 
 f_input.close()
