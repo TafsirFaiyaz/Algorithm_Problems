@@ -14,11 +14,11 @@ def ansfinder(l,ans):
 input_file = "/content/input1b.txt"
 output_file = "/content/output1b.txt"
 
-
 f_input = open(input_file, 'r')
 results = []
 
 for i in range(4):
+
     m= (f_input.readline().split())
     test=int(m[0])
     ans=int(m[1])
@@ -34,14 +34,12 @@ for i in range(4):
 
 f_output = open(output_file, 'w')
 
-
 for result in results:
 
     if type(result)==tuple:
 
         x= str(result[0])+" "+ str(result[1])+"\n"
         f_output.write(x)
-
 
     else:
 
