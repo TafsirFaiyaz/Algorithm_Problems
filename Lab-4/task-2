@@ -24,6 +24,7 @@ for i in range(4):
         l[b].append(a)
 
     def bfs(g,s):
+
         n = len(g)-1
         color = [False]*(n+1)
 
@@ -32,14 +33,20 @@ for i in range(4):
         q.append(s)
         print(s,end = ' ')
         f1.write(str(s)+' ')
+
         while len(q)!= 0:
+
             u = q.pop(0)
+
             for i in g[u]:
+
                 if color[i] == False:
+
                     print(i,end = ' ')
                     f1.write(str(i)+' ')
                     color[i] = True
                     q.append(i)
+
         print()
         f1.write("\n")
 
