@@ -5,6 +5,7 @@ with open('/content/input4.txt', 'r') as input_file, open('/content/output4.txt'
     Queries = int(input_file.readline())
 
     def find_kth_smallest(arr, k):
+
         if len(arr) == 1:
             return arr[0]
 
