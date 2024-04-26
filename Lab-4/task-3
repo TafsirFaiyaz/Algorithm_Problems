@@ -21,6 +21,7 @@ for i in range(4):
 
         l[a].append(b)
         l[b].append(a)
+
     clr = [False]*len(l)
 
     def color(i, x = clr):
@@ -34,7 +35,6 @@ for i in range(4):
         for i in g[s]:  #[0, [3, 4], [3], [1, 2], [1]]
             if color(i) == False:
                 dfs(g,i)
-
 
 
     dfs(l,1)
