@@ -35,8 +35,10 @@ for i in range(5):
             if clr[i] == True:
                 output = True
                 return
+
             elif clr[i] == False:
                 dfs(g,i)
+
         clr[s] = 2 #marking 2 after completing dfs of a vertex to avoid errors
     dfs(l,1)
 
