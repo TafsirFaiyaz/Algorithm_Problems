@@ -46,6 +46,7 @@ for i in range(5):
     if output == True:
         print("Yes")
         f1.write('Yes')
+
     else:
         print('No')
         f1.write('No')
