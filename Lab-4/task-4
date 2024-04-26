@@ -50,6 +50,7 @@ for i in range(5):
     else:
         print('No')
         f1.write('No')
+
     f1.write("\n")
 
 f.close()
