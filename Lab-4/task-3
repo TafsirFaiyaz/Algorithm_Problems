@@ -28,10 +28,13 @@ for i in range(4):
         return x[i]
 
     def dfs(g,s):
+
         global clr
         f1.write(str(s)+' ')
         print(s,end = ' ')
-        clr[s] = True   #s= 4
+
+        clr[s] = True  #s= 4
+                        
         for i in g[s]:  #[0, [3, 4], [3], [1, 2], [1]]
             if color(i) == False:
                 dfs(g,i)
