@@ -40,6 +40,7 @@ for i in range(5):
                 dfs(g,i)
 
         clr[s] = 2 #marking 2 after completing dfs of a vertex to avoid errors
+
     dfs(l,1)
 
     if output == True:
