@@ -29,6 +29,7 @@ for i in range(5):
         global clr
 
         clr[s] = True    #[0, [3, 4], [], [2], [3]]
+
         for i in g[s]:
 
             if clr[i] == True:
