@@ -12,16 +12,19 @@ for i in range(5):
         l.append([])
 
     for lines in range(e):
+
         inp=f.readline()
         lines = inp.strip()
         a,b = lines.split(' ')
         a,b = int(a),int(b)
+
         l[a].append(b)
         l[b].append(a)
 
     distance = [-1]*(n+1)
     path = [None]*(n+1)
     q = []
+
     def shortest(g,s,e):
         global distance
         global path
