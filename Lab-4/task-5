@@ -40,10 +40,12 @@ for i in range(5):
             for i in g[u]:
 
                 if distance[i] == -1:
+
                     q.append(i)
                     distance[i] = distance[u]+1
                     path[i] = u
                     print(path)
+
     shortest(l,1,en)
     print(f'Time: {distance[en]}')
     f1.write(f'Time: {distance[en]}\n')
