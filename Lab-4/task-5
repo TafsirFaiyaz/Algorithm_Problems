@@ -1,11 +1,13 @@
 f = open("/content/input5.txt","r")
 f1 = open("/content/output5.txt","w")
+
 for i in range(5):
     n,e,en = f.readline().split()
     n = int(n)
     e = int(e)
     en = int(en)
     l = [0]
+
     for i in range(int(n)):
         l.append([])
 
