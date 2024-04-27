@@ -56,9 +56,11 @@ for i in range(5):
         if u == 1:
             p+='1'
             break
+
         else:
             p+=(str(u))+' '
             u = path[u]
+
     x = p[::-1]
     f1.write(f"Shortest Path: {x}"+"\n")
     print('Shortest Path',x)
