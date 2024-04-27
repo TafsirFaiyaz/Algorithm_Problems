@@ -29,8 +29,10 @@ for i in range(5):
         global distance
         global path
         global q
+
         distance[s] = 0
         q.append(s)
+
         while len(q)>0:           #[0, [3, 4], [3], [1, 2], [1]]
             u = q.pop(0)
             for i in g[u]:
