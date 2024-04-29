@@ -15,6 +15,7 @@ def dfs(course, graph, visited, result):
     result.append(course)
 
 def course_order_dfs(v, prerequisites):
+
     graph = [[] for i in range(v + 1)]
     for ver, e in prerequisites:
         graph[ver].append(e)
@@ -42,7 +43,6 @@ for i in range(test):
 
     v, e = map(int, f_input.readline().split())
     prerequisites = []
-
 
     for j in range(e):
         a, b = map(int, f_input.readline().split())
