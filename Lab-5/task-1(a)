@@ -3,8 +3,10 @@ def dfs(course, graph, visited, result):
     visited[course] = 1
 
     for neighbor in graph[course]:
+
         if visited[neighbor] == 0:
             dfs(neighbor, graph, visited, result)
+
         elif visited[neighbor] == 1:
             output=True
             break
