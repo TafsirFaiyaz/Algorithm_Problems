@@ -48,9 +48,8 @@ for i in range(test):
 
     order = course_order_dfs(v, prerequisites)
 
-
-
     if output==False:
+
         x=""
         for course in order:
             print(course, end=" ")
