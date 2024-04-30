@@ -43,7 +43,6 @@ def dijkstra(n, edges, s):
 f1=open("/content/input1.txt","r")
 f2=open("/content/output1.txt","w")
 
-
 for i in range(2):
 
     n, m, edges, s = read_input(f1)
