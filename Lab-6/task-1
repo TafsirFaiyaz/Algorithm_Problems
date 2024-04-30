@@ -25,7 +25,9 @@ def dijkstra(n, edges, s):
 
         for v, w in edges[u]:
             new_dist = dist[u] + w
+
             if dist[v] == -1 or new_dist < dist[v]:
+
                 dist[v] = new_dist
                 heapq.heappush(heap, (new_dist, v))
 
