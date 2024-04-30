@@ -12,8 +12,8 @@ def read_input(f):
 
     return n, m, edges, s-1
 
-
 def dijkstra(n, edges, s):
+
     dist = [-1] * n
     dist[s] = 0
     heap = [(0, s)]
