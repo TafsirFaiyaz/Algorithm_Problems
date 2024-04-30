@@ -2,7 +2,6 @@ import heapq
 
 def read_input(f):
 
-
     n, m  = map(int, f.readline().split())
     edges = [[] for _ in range(n)]
     for i in range(m):
