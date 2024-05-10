@@ -23,6 +23,7 @@ with open('/content/input4.txt', 'r') as input_file, open('/content/output4.txt'
             return find_kth_smallest(r, k - len(l) - 1)
 
     for query in range(Queries):
+
         K = int(input_file.readline())
         kth_smallest = find_kth_smallest(num, K)
         
