@@ -46,7 +46,6 @@ for i in range(test):
     v, e = map(int, f_input.readline().split())
     prerequisites = []
 
-
     for i in range(e):
         a, b = map(int, f_input.readline().split())
         prerequisites.append((a, b))
