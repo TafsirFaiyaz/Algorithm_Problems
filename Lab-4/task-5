@@ -4,6 +4,7 @@ f1 = open("/content/output5.txt","w")
 for i in range(5):
 
     n,e,en = f.readline().split()
+
     n = int(n)
     e = int(e)
     en = int(en)
@@ -16,6 +17,7 @@ for i in range(5):
 
         inp=f.readline()
         lines = inp.strip()
+
         a,b = lines.split(' ')
         a,b = int(a),int(b)
 
@@ -50,6 +52,7 @@ for i in range(5):
     shortest(l,1,en)
     print(f'Time: {distance[en]}')
     f1.write(f'Time: {distance[en]}\n')
+
     p = ''
     u = en
 
